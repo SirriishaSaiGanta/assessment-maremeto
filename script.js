@@ -1,3 +1,4 @@
+// creating requries varaibles
 let uniqueId = 1;
 let imageUrl = "https://plus.unsplash.com/premium_photo-1682090786689-741d60a11384";
 let title="mens kurta";
@@ -6,25 +7,33 @@ let price=1199.00;
 let comparedPrice = 2999.00;
 let discount = "50% Off";
 let categoryId  = 0;
+let badge = " ";
+// end of creating requries varaibles
 
-
-
-function createCards(i){
+//creating cards container
+function createCards(){
+    let isClicked = true;
     let cards = document.createElement('div');
-    let categoryId  = i;
-    let cardsId = "cardsId" +  categoryId;
-    cards.id = cardsId;
+    // let categoryId  = i;
+    // let cardsId = ;
+    cards.id = "cardsId";
     cards.classList.add("cards");
     document.body.appendChild(cards);
 }
 
-function creatingProductCard(i){
-    let categoryId = i;
+
+function removingCards(){
+    // let cardsIDD = "cardsId" + i;
     let isClicked = false;
+    let removeCards = document.getElementById("cardsId");
+    document.body.removeChild(removeCards);
+}
+
+//creating product cards
+function creatingProductCard(){
     
     let productCard = "productCard"+uniqueId;
     productCard = document.createElement('div');
-    productCardId = "productCard"+i;
     productCard.classList.add("product-card");
 
     let productImage = document.createElement('img');
@@ -32,6 +41,15 @@ function creatingProductCard(i){
     productImage.alt = "product image";
     productImage.classList.add("product-image");
     productCard.appendChild(productImage);
+
+    if(badge){
+        let badgeEle = document.createElement('span');
+        badgeEle.classList.add('badge');
+        console.log(badge);
+        badgeEle.textContent = badge;
+        productCard.appendChild(badgeEle);
+    }
+    
 
     let productTitleCard = document.createElement('div');
     productTitleCard.classList.add("product-title-card");
@@ -79,18 +97,13 @@ function creatingProductCard(i){
     productCard.appendChild(addtoCartBtnELe);
 
     
-    let cardsId = "cardsId" + i;
-    let cardsEle = document.getElementById(cardsId);
+    // let cardsId =  ;
+    let cardsEle = document.getElementById("cardsId");
     cardsEle.appendChild(productCard);
 
 }
-function removingCards(i){
-    let cardsIDD = "cardsId" + i;
-    let removeCards = document.getElementById(cardsIDD);
-    document.body.removeChild(removeCards);
-}
 
-
+//fetching data from the given api
 function fetchData(i){
     fetch("https://cdn.shopify.com/s/files/1/0564/3685/0790/files/multiProduct.json").then((response)=>response.json())
     .then((data)=> {
@@ -104,7 +117,8 @@ function fetchData(i){
             vendor = dataRequired.vendor;
             price="Rs "+dataRequired.price+".00";
             comparedPrice = dataRequired.compare_at_price+".00";
-            creatingProductCard(i)
+            badge = dataRequired.badge_text;
+            creatingProductCard();
         }
         )
            
@@ -113,33 +127,53 @@ function fetchData(i){
     .catch(err=> console.log(err))
 }
 
-fetchData(0);
+
+//creating inital stage
 createCards(0);
-
-
-
+fetchData(0);
 let ele = document.getElementById("categories-men");
 ele.classList.remove("category-not-selected")
 ele.classList.add("category-selected");
 
-for(let i=0;i<3;i++){
-    let categories = {"0":"men","1":"women","2":"kids"};
-    let string_i = i.toString();
-    console.log(`categories-${categories[string_i]}`);
-    let selectedCategory = document.getElementById(`categories-${categories[string_i]}`);
-     selectedCategory.addEventListener('click',()=>{
-        selectedCategory.classList.remove("category-not-selected")
-        selectedCategory.classList.add("category-selected");
-        removingCards(i);
-        fetchData(i);
-    })
-}
 
-let categoriesWomen = document.getElementById("categories-women");
-categoriesWomen.onclick = function(){
-    fetchData(i);
-    selectedCategory.classList.remove("category-not-selected")
-    selectedCategory.classList.add("category-selected");
-}
+// dynamically generating product  cards based on tab switching
+let categoriesMenEle = document.getElementById("categories-men");
+let categoriesWomenEle = document.getElementById("categories-women");
+let categoriesKidsEle = document.getElementById("categories-kids");
+
+categoriesMenEle.addEventListener('click',()=>{
+    categoriesMenEle.innerText
+    categoriesMenEle.classList.add("category-selected");
+    categoriesMenEle.classList.remove("category-not-selected");
+    categoriesWomenEle.classList.add("category-not-selected");
+    categoriesWomenEle.classList.remove("category-selected");
+    categoriesKidsEle.classList.add("category-not-selected");
+    categoriesKidsEle.classList.remove("category-selected");
+    removingCards();
+    createCards();
+    fetchData(0);
+})
+categoriesWomenEle.addEventListener('click',()=>{
+    categoriesMenEle.classList.add("category-not-selected");
+    categoriesMenEle.classList.remove("category-selected");
+    categoriesWomenEle.classList.add("category-selected");
+    categoriesWomenEle.classList.remove("category-not-selected");
+    categoriesKidsEle.classList.add("category-not-selected");
+    categoriesKidsEle.classList.remove("category-selected");
+    removingCards();
+    createCards();
+    fetchData(1);
+})
+categoriesKidsEle.addEventListener('click',()=>{
+    categoriesMenEle.classList.add("category-not-selected");
+    categoriesMenEle.classList.remove("category-selected");
+    categoriesWomenEle.classList.add("category-not-selected");
+    categoriesWomenEle.classList.remove("category-selected");
+    categoriesKidsEle.classList.add("category-selected");
+    categoriesKidsEle.classList.remove("category-not-selected");
+    removingCards();
+    createCards();
+    fetchData(2);
+})
 
 

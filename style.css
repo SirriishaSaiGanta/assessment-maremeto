@@ -1,8 +1,12 @@
+/* importing external font family */
 @import url("https://fonts.google.com/specimen/Inter"); 
 
 *{
     text-align: center;
     font-family: Inter;
+}
+.main-heading{
+    font-size: 35px;
 }
 #categories{
     display: flex;
@@ -23,15 +27,7 @@
     background-color:black;
     color:white;
 }
-/* .common-categories{
-    padding: 30px;
-    height:25px;
-    width:200px;    
-    text-align:center;
-    background-color:#f2f2f2 ;
-    text-align:center;
-    color:black;
-} */
+
 .category-selected{
     background-color:black;
     color:white;
@@ -54,9 +50,7 @@
     display:flex;
     justify-content: center;
 }
-/* #categories-men,#categories-women,#categories-kids{
-    display: none; 
-} */
+
 .product-card{
     height:75vh;
     width:17vw;
@@ -73,7 +67,7 @@
 .badge{
     position: relative;
     top:-300px;
-    left:-60px;
+    
     background-color: #fff;
     color:black;
     font-weight: 100;
@@ -91,7 +85,8 @@
     padding-left: 6px;
     padding-right: 6px;
     padding-bottom: 0;
-    overflow: hidden;
+    width: 60px;
+    
 }
 .product-vendor{
     padding-left: 6px;
@@ -132,33 +127,108 @@
     border-radius:10px;
 }
 
-@media screen and (min-width: 768px) and (max-width:1024px){
-    *{
-        text-align:center;
-    }    
-    body{
-        display:flex;
-        justify-content: center;
-    }
-}
+/* Adding responsives to website using media queries */
 
-@media screen and (max-width: 767px){
+@media screen and (min-width: 768px) and (max-width:1024px){
     body{
         display:flex;
         justify-content: center;
         flex-direction: column;
     }
-    .card{
+    .main-heading{
+        font-size: 30px;
+    }
+    .cards{
+        overflow-wrap:visible;
+        display:flex;
+        justify-content: center;
+       
+    }
+    #categories{
+        padding:5px;
+        margin: 5px;
+       
+    }
+    .category-selected{
+        background-color:black;
+        color:white;
+        padding: 15px;
+        height:30px;
+        width:170px;    
+        text-align:center;
+        
+    }
+    .category-not-selected{
+        padding:15px;
+        height:30px;
+        width:170px;    
+        background-color:#f2f2f2 ;
+        text-align:center;
+        color:black;
+        
+    }
+    .product-card{
+        
+        height:75vh;
+        width:40vw;
+        margin:10px;
+    }
+    .add-to-cart-button{
+        width:40VW;
+        
+    }
+    
+}
+
+@media (max-width: 767px){
+    body{
+        display:flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .main-heading{
+        font-size: 25px;
+    }
+    .cards{
         overflow-wrap: normal;
         display:flex;
         justify-content: center;
         flex-direction: column;
     }
+    #categories{
+        padding:5px;
+        margin: 5px;
+       
+    }
+    .category-selected{
+        background-color:black;
+        color:white;
+        padding: 15px;
+        height:20px;
+        width:170px;    
+        text-align:center;
+        
+    }
+    .category-not-selected{
+        padding:15px;
+        height:20px;
+        width:170px;    
+        background-color:#f2f2f2 ;
+        text-align:center;
+        color:black;
+        
+    }
     .product-card{
-        height:80vh;
-        width:98vw;
+        
+        height:75vh;
+        width:80vw;
         margin:10px;
     }
+    .add-to-cart-button{
+        width:80VW;
+        
+    }
+    
 
 }
 

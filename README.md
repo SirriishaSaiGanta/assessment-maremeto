@@ -23,5 +23,6 @@
     1. index.html: The main HTML file containing the structure of the web page.
     2. styles.css: The CSS file containing styles for the layout and design.
     3. scripts.js: The JavaScript file containing logic for tab switching and product card generation.
+    4. browser_icon: This file contains the information required for browser icon.
     
 

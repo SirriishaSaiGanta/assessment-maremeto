@@ -49,19 +49,21 @@
 #cards-men,#cards-women,#cards-kids,.cards{
     display:flex;
     justify-content: center;
+    height:85vh;
 }
 
 .product-card{
     height:80vh;
     width:17vw;
     margin:15px;
+    position: relative;
     
 }
 .product-image{
     height:300px;
     width:100%;
     border-radius: 10%;
-    position: relative;
+    
     /* z-index:1; */
     
 }

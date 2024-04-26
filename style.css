@@ -52,7 +52,7 @@
 }
 
 .product-card{
-    height:75vh;
+    height:80vh;
     width:17vw;
     margin:15px;
     
@@ -66,9 +66,9 @@
     
 }
 .badge{
-    position: absolue;
-    top:0px;
-    left:0px;
+    position: absolute;
+    top:0;
+    left:0;
     background-color: #fff;
     color:black;
     font-weight: 100;

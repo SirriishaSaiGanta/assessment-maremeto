@@ -89,6 +89,7 @@
     padding-left: 6px;
     padding-right: 6px;
     padding-bottom: 0;
+    padding-top: 0;
     width: 50em;
     height: 2em;
     
@@ -100,6 +101,7 @@
     padding-left: 6px;
     padding-right: 6px;
     padding-bottom: 0;
+   
     width: 15em;
 }
 .product-price-card{

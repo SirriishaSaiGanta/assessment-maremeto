@@ -61,7 +61,7 @@ function creatingProductCard(){
 
     let dotELe = document.createElement('p');
     dotELe.innerText=".";
-    dotELe.classList.add("product-title");
+    dotELe.classList.add("product-title-space");
     productTitleCard.appendChild(dotELe);
 
     let productVendor = document.createElement('p');

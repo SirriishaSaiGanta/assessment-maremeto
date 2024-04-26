@@ -61,18 +61,20 @@
     height:300px;
     width:100%;
     border-radius: 10%;
+    position: relative;
     /* z-index:1; */
     
 }
 .badge{
-    position: relative;
-    top:-300px;
-    
+    position: absolue;
+    top:0px;
+    left:0px;
     background-color: #fff;
     color:black;
     font-weight: 100;
     padding: 5px;
     border-radius: 5px;
+     z-index:1;
     /* z-index:2; */
 }
 
@@ -85,13 +87,18 @@
     padding-left: 6px;
     padding-right: 6px;
     padding-bottom: 0;
-    width: 60px;
+    width: 50em;
+    height: 2em;
     
+}
+.product-title-space{
+    width: 5em;
 }
 .product-vendor{
     padding-left: 6px;
     padding-right: 6px;
     padding-bottom: 0;
+    width: 15em;
 }
 .product-price-card{
     display: flex;
